@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #content-wrapper {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        .section {
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+        }
+        #home {
+            background-image: url('C:/Users/User/Downloads/Artboard 1.png');
+        }
+        #about {
+            background-image: url('C:/Users/User/Downloads/Artboard 1.png');
+        }
+        #my-work {
+            background-image: url('C:/Users/User/Downloads/Artboard 1.png');
+        }
+        #contact {
+            background-image: url('C:/Users/User/Downloads/Artboard 1.png');
+        }
+        .center-image {
+            max-width: 50%;
+            max-height: 50%;
+            margin-bottom: 20px;
+        }
+        .content {
+            padding: 50px;
+            text-align: center;
+            color: white;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .nav-button {
+            position: relative;
+            width: 400px;
+            height: 100px;
+            cursor: pointer;
+        }
+        .nav-button img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.3s ease;
+        }
+        .nav-button .hover-image {
+            opacity: 0;
+        }
+        .nav-button:hover .hover-image {
+            opacity: 1;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="content-wrapper">
+        <div id="home" class="section">
+            <img src="C:/Users/User/Downloads/tekst 4.png" alt="Center Image" class="center-image">
+            <div class="nav-buttons">
+                <a href="#about" class="nav-button smooth-scroll">
+                    <img src="C:/Users/User/Downloads/about me 1.png" alt="About">
+                    <img src="C:/Users/User/Downloads/about me 3.png" alt="About Hover" class="hover-image">
+                </a>
+                <a href="#my-work" class="nav-button smooth-scroll">
+                    <img src="C:/Users/User/Downloads/my work 1.png" alt="My Work">
+                    <img src="C:/Users/User/Downloads/my work 2.png" alt="My Work Hover" class="hover-image">
+                </a>
+                <a href="#contact" class="nav-button smooth-scroll">
+                    <img src="C:/Users/User/Downloads/contact 1.png" alt="Contact">
+                    <img src="C:/Users/User/Downloads/contact 2.png" alt="Contact Hover" class="hover-image">
+                </a>
+            </div>
+        </div>
+        <div id="about" class="section">
+            <a href="#home" class="nav-button home-button smooth-scroll">
+                <img src="C:/Users/User/Downloads/home 1.png" alt="Home">
+                <img src="C:/Users/User/Downloads/home 2.png" alt="Home Hover" class="hover-image">
+            </a>
+            <div class="content">
+                <h1>About Me</h1>
+                <p>Here you can add your personal introduction or any other content you'd like to showcase.</p>
+            </div>
+        </div>
+        <div id="my-work" class="section">
+            <a href="#home" class="nav-button home-button smooth-scroll">
+                <img src="C:/Users/User/Downloads/home 1.png" alt="Home">
+                <img src="C:/Users/User/Downloads/home 2.png" alt="Home Hover" class="hover-image">
+            </a>
+            <div class="content">
+                <h1>My Work</h1>
+                <p>Showcase your projects and accomplishments in this section.</p>
+                <div class="image-gallery">
+                    <a href="image1.html" class="gallery-item">
+                        <img src="C:/Users/User/Downloads/image_1.png" alt="Image 1">
+                    </a>
+                    <a href="image2.html" class="gallery-item">
+                        <img src="C:/Users/User/Downloads/image_1.png" alt="Image 2">
+                    </a>
+                    <a href="image3.html" class="gallery-item">
+                        <img src="C:/Users/User/Downloads/image_1.png" alt="Image 3">
+                    </a>
+                    <a href="image4.html" class="gallery-item">
+                        <img src="C:/Users/User/Downloads/image_1.png" alt="Image 4">
+                    </a>
+                    <a href="image5.html" class="gallery-item">
+                        <img src="C:/Users/User/Downloads/image_1.png" alt="Image 5">
+                    </a>
+                    <a href="image6.html" class="gallery-item">
+                        <img src="C:/Users/User/Downloads/image_1.png" alt="Image 6">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="contact" class="section">
+            <a href="#home" class="nav-button home-button smooth-scroll">
+                <img src="C:/Users/User/Downloads/home 1.png" alt="Home">
+                <img src="C:/Users/User/Downloads/home 2.png" alt="Home Hover" class="hover-image">
+            </a>
+            <div class="content">
+                <h1>Contact</h1>
+                <p>Provide your contact information or a contact form here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const contentWrapper = document.getElementById('content-wrapper');
+            let isScrolling = false;
+            let startY;
+
+            contentWrapper.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                if (!isScrolling) {
+                    startY = e.pageY;
+                    isScrolling = true;
+                    setTimeout(() => {
+                        const direction = e.deltaY > 0 ? 1 : -1;
+                        const currentSection = Math.round(contentWrapper.scrollTop / window.innerHeight);
+                        const nextSection = Math.max(0, Math.min(3, currentSection + direction));
+                        contentWrapper.scrollTo({
+                            top: nextSection * window.innerHeight,
+                            behavior: 'smooth'
+                        });
+                        isScrolling = false;
+                    }, 50);
+                }
+            }, { passive: false });
+
+            contentWrapper.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].pageY;
+            });
+
+            contentWrapper.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                if (!isScrolling) {
+                    isScrolling = true;
+                    setTimeout(() => {
+                        const endY = e.touches[0].pageY;
+                        const direction = startY > endY ? 1 : -1;
+                        const currentSection = Math.round(contentWrapper.scrollTop / window.innerHeight);
+                        const nextSection = Math.max(0, Math.min(3, currentSection + direction));
+                        contentWrapper.scrollTo({
+                            top: nextSection * window.innerHeight,
+                            behavior: 'smooth'
+                        });
+                        isScrolling = false;
+                    }, 50);
+                }
+            }, { passive: false });
+
+            // Add smooth scrolling to navigation buttons
+            document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
