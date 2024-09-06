@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image 1 Details</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .background {
+            height: 100vh;
+            background-image: url('/Portfolio/docs/assets/Artboard 1.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .nav-button {
+            position: relative;
+            width: 400px;
+            height: 100px;
+            cursor: pointer;
+        }
+        .nav-button img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.3s ease;
+        }
+        .nav-button .hover-image {
+            opacity: 0;
+        }
+        .nav-button:hover .hover-image {
+            opacity: 1;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .image-container img {
+            max-width: 80%;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <a href="index.html#home" class="nav-button home-button">
+            <img src="/Portfolio/docs/assets/home 1.png" alt="Home">
+            <img src="/Portfolio/docs/assets/home 2.png" alt="Home Hover" class="hover-image">
+        </a>
+        <div class="content">
+            <div class="image-container">
+                <img src="/path/to/your/first-image.jpg" alt="First Image">
+                <img src="/path/to/your/second-image.jpg" alt="Second Image">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
