@@ -52,8 +52,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 80%;
-            max-width: 1000px;
+            width: 800px; /* Fixed width for content */
             padding: 20px 0;
         }
         .description {
@@ -70,28 +69,22 @@
             font-size: 1.1em;
             line-height: 1.6;
         }
-        .image-container {
+        .media-container {
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            width: 100%;
         }
-        .image-container img {
-            max-width: 100%;
+        .video-container, .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        video, .image-container img {
+            width: 800px; /* Fixed width for video and images */
             height: auto;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .video-container {
-            width: 100%;
-            margin-top: 20px;
-        }
-        video {
-            width: 100%;
-            height: auto;
-            max-width: 800px;
-            display: block;
-            margin: 0 auto;
         }
     </style>
 </head>
@@ -110,19 +103,22 @@
                 <p>Here you can add a brief description of your work. Explain the project, its goals, and any interesting aspects or challenges you encountered. This text will appear above the images, providing context for your viewers.</p>
             </div>
 
-            <div class="video-container"></div>
-                <video controls>
-                    <source src="/Portfolio/docs/assets/video1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            
-            <div class="image-container">
-                <img src="/Portfolio/docs/assets/NEXX%20LOGO%20BLUE%20backdrop%202k.png" alt="First Image">
-                <img src="/Portfolio/docs/assets/nexx%20logo%202.png" alt="Second Image">
-            </div>
+            <div class="media-container">
+                <div class="video-container">
+                    <video controls>
+                        <source src="/Portfolio/docs/assets/video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
 
-            
+                <div class="image-container">
+                    <img src="/Portfolio/docs/assets/NEXX%20LOGO%20BLUE%20backdrop%202k.png" alt="First Image">
+                </div>
+
+                <div class="image-container">
+                    <img src="/Portfolio/docs/assets/nexx%20logo%202.png" alt="Second Image">
+                </div>
+            </div>
         </div>
     </div>
 </body>
