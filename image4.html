@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Subpage</title>
+    <title>Image 1 Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        .background {
+            height: 100vh;
+            background-image: url('/Portfolio/docs/assets/Artboard 2.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .home-button-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+        .home-button {
+            width: 400px;
+            height: 100px;
+            position: relative;
+        }
+        .home-button img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.3s ease;
+        }
+        .home-button .hover-image {
+            opacity: 0;
+        }
+        .home-button:hover .hover-image {
+            opacity: 1;
+        .background {
+            /* Your existing styles */
+        }
+        .home-button-container {
+            /* Your existing styles */
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            flex-grow: 1;
+            width: 100%;
+            padding-top: 40px;
+            overflow-y: auto;
+        }
+        .description {
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+        .description h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        .description p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 80%;
+            max-width: 800px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="home-button-container">
+            <a href="index.html#home" class="home-button">
+                <img src="/Portfolio/docs/assets/sub_home1.png" alt="Home">
+                <img src="/Portfolio/docs/assets/sub_home2.png" alt="Home Hover" class="hover-image">
+            </a>
+        </div>
+
+        <div class="content">
+            <div class="description">
+                <h2>Project Title</h2>
+                <p>Here you can add a brief description of your work. Explain the project, its goals, and any interesting aspects or challenges you encountered. This text will appear above the images, providing context for your viewers.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="/Portfolio/docs/assets/NEXX%20LOGO%20BLUE%20backdrop%202k.png" alt="First Image">
+                <img src="/Portfolio/docs/assets/nexx%20logo%202.png" alt="Second Image">
+            </div>
+
+            <div class="video-container">
+                <video controls>
+                    <source src="/Portfolio/docs/assets/video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
