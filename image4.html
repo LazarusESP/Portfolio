@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Subpage</title>
-    <title>Image 1 Details</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
@@ -13,7 +12,7 @@
             font-family: 'Roboto', sans-serif;
         }
         .background {
-            height: 100vh;
+            min-height: 100vh;
             background-image: url('/Portfolio/docs/assets/Artboard 2.png');
             background-attachment: fixed;
             background-position: center;
@@ -27,12 +26,13 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding-top: 20px;
+            padding: 20px 0;
         }
         .home-button {
-            width: 400px;
-            height: 100px;
+            width: 200px;
+            height: 50px;
             position: relative;
+            display: block;
         }
         .home-button img {
             position: absolute;
@@ -47,25 +47,17 @@
         }
         .home-button:hover .hover-image {
             opacity: 1;
-        .background {
-            /* Your existing styles */
-        }
-        .home-button-container {
-            /* Your existing styles */
         }
         .content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            flex-grow: 1;
-            width: 100%;
-            padding-top: 40px;
-            overflow-y: auto;
+            width: 80%;
+            max-width: 1000px;
+            padding: 20px 0;
         }
         .description {
-            width: 80%;
-            max-width: 800px;
+            width: 100%;
             margin-bottom: 30px;
             color: white;
             text-align: center;
@@ -83,17 +75,23 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            width: 80%;
-            max-width: 800px;
+            width: 100%;
         }
         .image-container img {
-            width: 100%;
+            max-width: 100%;
             height: auto;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .video-container {
+            width: 100%;
+            margin-top: 20px;
         }
         video {
             width: 100%;
             height: auto;
+            max-width: 800px;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
