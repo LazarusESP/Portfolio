@@ -11,9 +11,6 @@
             margin: 0;
             font-family: 'Roboto', sans-serif;
             background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .background {
             height: 100vh;
@@ -23,7 +20,7 @@
             box-sizing: border-box;
         }
         .home-button-container {
-            height: 10vh; /* Make home button container 10% of viewport height */
+            height: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,22 +50,28 @@
             flex-direction: column;
             flex-grow: 1;
             gap: 20px;
-            height: 90vh; /* Remaining 90% of the viewport height */
         }
         .row {
             display: flex;
             gap: 20px;
-            height: 50%;
+        }
+        .row-16-9 {
+            flex-basis: calc(40% - 10px);
+        }
+        .row-square {
+            flex-basis: calc(60% - 10px);
+        }
+        .image-container {
+            position: relative;
+            overflow: hidden;
         }
         .row-16-9 .image-container {
             width: calc(50% - 10px);
-            position: relative;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
+            padding-top: 28.125%; /* 16:9 aspect ratio */
         }
         .row-square .image-container {
-            width: calc(25% - 10px);
-            position: relative;
-            padding-top: 100%; /* 1:1 aspect ratio */
+            width: calc(50% - 10px);
+            padding-top: calc(30% - 10px);
         }
         .image-container img {
             position: absolute;
