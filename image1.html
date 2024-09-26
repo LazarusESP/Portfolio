@@ -3,62 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Subpage</title>
+    <title>Project Subpage - Image Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
-            margin: 0;
-            padding: 0;
             height: 100%;
-            overflow: hidden;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: black;
         }
         .background {
             height: 100vh;
-            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .home-button-container {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .home-button {
+            width: 200px;
+            height: 50px;
+            position: relative;
+            display: block;
         }
         .home-button img {
-            width: 50px;
-            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.3s ease;
         }
         .home-button .hover-image {
-            display: none;
+            opacity: 0;
         }
         .home-button:hover .hover-image {
-            display: inline;
-        }
-        .home-button:hover img:not(.hover-image) {
-            display: none;
+            opacity: 1;
         }
         .image-grid {
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            flex-grow: 1;
+            gap: 20px;
         }
         .row {
             display: flex;
-            width: 100%;
+            gap: 20px;
         }
         .row-16-9 {
-            flex: 0 0 33.33%; /* Adjust this value to change the height of the first row */
+            flex-basis: calc(40% - 10px);
         }
         .row-square {
-            flex: 1;
-            flex-wrap: wrap;
+            flex-basis: calc(60% - 10px);
         }
         .image-container {
-            flex: 1;
-            padding: 5px;
-            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+        .row-16-9 .image-container {
+            width: calc(50% - 10px);
+            padding-top: 28.125%; /* 16:9 aspect ratio */
+        }
+        .row-square .image-container {
+            width: calc(50% - 10px);
+            padding-top: calc(30% - 10px);
         }
         .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .image-container:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
