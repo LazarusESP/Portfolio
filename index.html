@@ -257,63 +257,83 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const contentWrapper = document.getElementById('content-wrapper');
-            let isScrolling = false;
-            let startY;
+document.addEventListener('DOMContentLoaded', (event) => {
+    const contentWrapper = document.getElementById('content-wrapper');
+    let isScrolling = false; // Locks the scrolling during animation
+    let startY;
+    const scrollThreshold = 30; // Scroll buffer to prevent misinterpretation of small movements
 
-            contentWrapper.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                if (!isScrolling) {
-                    startY = e.pageY;
-                    isScrolling = true;
-                    setTimeout(() => {
-                        const direction = e.deltaY > 0 ? 1 : -1;
-                        const currentSection = Math.round(contentWrapper.scrollTop / window.innerHeight);
-                        const nextSection = Math.max(0, Math.min(3, currentSection + direction));
-                        contentWrapper.scrollTo({
-                            top: nextSection * window.innerHeight,
-                            behavior: 'smooth'
-                        });
-                        isScrolling = false;
-                    }, 600);
-                }
-            }, { passive: false });
+    function smoothScrollTo(targetPosition, duration) {
+        const startPosition = contentWrapper.scrollTop;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
 
-            contentWrapper.addEventListener('touchstart', (e) => {
-                startY = e.touches[0].pageY;
-            });
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed, startPosition, distance, duration);
+            contentWrapper.scrollTop = run;
 
-            contentWrapper.addEventListener('touchmove', (e) => {
-                e.preventDefault();
-                if (!isScrolling) {
-                    isScrolling = true;
-                    setTimeout(() => {
-                        const endY = e.touches[0].pageY;
-                        const direction = startY > endY ? 1 : -1;
-                        const currentSection = Math.round(contentWrapper.scrollTop / window.innerHeight);
-                        const nextSection = Math.max(0, Math.min(3, currentSection + direction));
-                        contentWrapper.scrollTo({
-                            top: nextSection * window.innerHeight,
-                            behavior: 'smooth'
-                        });
-                        isScrolling = false;
-                    }, 600);
-                }
-            }, { passive: false });
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            } else {
+                contentWrapper.scrollTop = targetPosition; // Ensure exact position after animation
+                isScrolling = false; // Unlock scrolling after animation finishes
+            }
+        }
 
-            document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+        function ease(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animation);
+    }
+
+    function getCurrentSection() {
+        return Math.round(contentWrapper.scrollTop / window.innerHeight);
+    }
+
+    contentWrapper.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (!isScrolling) {
+            isScrolling = true; // Lock scrolling
+            const direction = e.deltaY > 0 ? 1 : -1;
+
+            // Only process large scroll movements (negate small fluctuations)
+            if (Math.abs(e.deltaY) > scrollThreshold) {
+                const currentSection = getCurrentSection();
+                const nextSection = Math.max(0, Math.min(3, currentSection + direction));
+                smoothScrollTo(nextSection * window.innerHeight, 500); // Scroll duration set to 1000ms (1 second)
+            } else {
+                isScrolling = false; // Unlock scrolling if threshold not met
+            }
+        }
+    }, { passive: false });
+
+    contentWrapper.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].pageY;
+    });
+
+    contentWrapper.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (!isScrolling) {
+            isScrolling = true; // Lock scrolling
+            const endY = e.touches[0].pageY;
+            const direction = startY > endY ? 1 : -1;
+
+            // Only process large touch movements (negate small fluctuations)
+            if (Math.abs(startY - endY) > scrollThreshold) {
+                const currentSection = getCurrentSection();
+                const nextSection = Math.max(0, Math.min(3, currentSection + direction));
+                smoothScrollTo(nextSection * window.innerHeight, 1000); // Scroll duration set to 1000ms (1 second)
+            } else {
+                isScrolling = false; // Unlock scrolling if threshold not met
+            }
+        }
+    }, { passive: false });
 
             const aboutSection = document.getElementById('about');
             const secondImage = aboutSection.querySelector('.second-image');
