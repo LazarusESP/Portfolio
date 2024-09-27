@@ -108,7 +108,7 @@
             align-items: center;
             width: 100%;
             height: 89vh;
-            margin-top: 10vh; /* Top margin for home button */
+            margin-top: 10vh;
         }
 
         .gallery-item {
@@ -130,12 +130,31 @@
             transform: scale(1.1);
         }
 
-        /* Adjust home button size for smaller screens */
         @media (max-height: 400px) {
             .home-button {
                 width: 200px;
                 height: 50px;
             }
+        }
+
+        /* New styles for the changing image in About section */
+        .changing-image {
+            width: 710px;
+            height: 130px;
+            position: relative;
+            margin-top: 80px; /* Adjust as needed to position below home button */
+        }
+        .changing-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .changing-image .second-image {
+            opacity: 0;
         }
     </style>
 </head>
@@ -163,6 +182,10 @@
                 <img src="/Portfolio/docs/assets/home 1.png" alt="Home">
                 <img src="/Portfolio/docs/assets/home 2.png" alt="Home Hover" class="hover-image">
             </a>
+            <div class="changing-image">
+                <img src="/Portfolio/docs/assets/big about me 1.png" alt="About Image 1" class="first-image">
+                <img src="/Portfolio/docs/assets/big about me 2.png" alt="About Image 2" class="second-image">
+            </div>
             <div class="content">
                 <h1>About Me</h1>
                 <p>Here you can add your personal introduction or any other content you'd like to showcase.</p>
@@ -248,7 +271,6 @@
                 }
             }, { passive: false });
 
-            // Add smooth scrolling to navigation buttons
             document.querySelectorAll('.smooth-scroll').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -261,6 +283,28 @@
                     }
                 });
             });
+
+            // New code for changing image in About section
+            const aboutSection = document.getElementById('about');
+            const secondImage = aboutSection.querySelector('.second-image');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        secondImage.style.opacity = '1';
+                    } else {
+                        secondImage.style.opacity = '0';
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(aboutSection);
         });
     </script>
 </body>
