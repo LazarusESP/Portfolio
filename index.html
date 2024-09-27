@@ -355,6 +355,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }, observerOptions);
 
             observer.observe(aboutSection);
+    // Function to detect mobile devices
+        function isMobileDevice() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
+
+        // Redirect if on mobile
+        function redirectToMobile() {
+            if (isMobileDevice()) {
+                window.location.href = "https://www.behance.net/piotrporczyski"; // Replace with your mobile URL
+            }
+        }
+
+        // Call the redirect function on page load
+        window.onload = redirectToMobile;
         });
     </script>
 </body>
