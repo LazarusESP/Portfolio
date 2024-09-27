@@ -3,87 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Subpage - Image Gallery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Portfolio</title>
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: black;
-        }
         .background {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            box-sizing: border-box;
+            /* Add any background styles you want */
         }
         .home-button-container {
-            height: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .home-button {
-            width: 200px;
-            height: 50px;
-            position: relative;
-            display: block;
+            /* Add styles for positioning the home button */
+            position: absolute;
+            top: 20px;
+            left: 20px;
         }
         .home-button img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transition: opacity 0.3s ease;
+            width: 50px; /* Adjust as needed */
+            height: auto;
         }
         .home-button .hover-image {
-            opacity: 0;
+            display: none;
         }
         .home-button:hover .hover-image {
-            opacity: 1;
+            display: inline;
         }
-        .image-grid {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            gap: 20px;
+        .home-button:hover img:not(.hover-image) {
+            display: none;
         }
-        .row {
-            display: flex;
-            gap: 20px;
-        }
-        .row-16-9 {
-            flex-basis: calc(40% - 10px);
-        }
-        .row-square {
-            flex-basis: calc(60% - 10px);
-        }
-        .image-container {
-            position: relative;
-            overflow: hidden;
-        }
-        .row-16-9 .image-container {
-            width: calc(50% - 10px);
-            padding-top: 28.125%; /* 16:9 aspect ratio */
-        }
-        .row-square .image-container {
-            width: calc(50% - 10px);
-            padding-top: calc(30% - 10px);
-        }
-        .image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        .image-container:hover img {
-            transform: scale(1.05);
+        .behance-container {
+            /* Add styles for positioning the Behance embed */
+            margin-top: 80px; /* Adjust based on your layout */
         }
     </style>
 </head>
@@ -95,30 +41,8 @@
                 <img src="/Portfolio/docs/assets/sub_home2.png" alt="Home Hover" class="hover-image">
             </a>
         </div>
-
-        <div class="image-grid">
-            <div class="row row-16-9">
-                <div class="image-container">
-                    <img src="/Portfolio/docs/assets/image-1.png" alt="Image 1">
-                </div>
-                <div class="image-container">
-                    <img src="/Portfolio/docs/assets/image-2.png" alt="Image 2">
-                </div>
-            </div>
-            <div class="row row-square">
-                <div class="image-container">
-                    <img src="/Portfolio/docs/assets/image-3.png" alt="Image 3">
-                </div>
-                <div class="image-container">
-                    <img src="/Portfolio/docs/assets/image-4.png" alt="Image 4">
-                </div>
-                <div class="image-container">
-                    <img src="/Portfolio/docs/assets/image-5.png" alt="Image 5">
-                </div>
-                <div class="image-container">
-                    <img src="/Portfolio/docs/assets/image-6.png" alt="Image 6">
-                </div>
-            </div>
+        <div class="behance-container">
+            <iframe src="https://www.behance.net/embed/project/208884271?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
     </div>
 </body>
